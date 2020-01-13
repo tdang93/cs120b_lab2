@@ -69,6 +69,11 @@ int main(void) {
 		tmpD = 0x00; //this appears to let the output default to 0x00
 	}
 	
+	if ( ((PINA > PINC) && (PINA - PINC > 0x50)) || ( (PINC > PINA) && (PINC - PINA > 0x50))  ) {
+		tmpD = tmpD | 0x02;
+	}
+
+	
 	PORTD = tmpD;
 	//PORTD = high;
 	//PORTC = low;

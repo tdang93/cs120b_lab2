@@ -114,13 +114,13 @@ setPINC 0x00
 continue 2
 expectPORTD 0x00
 checkResult
-
-test "PINA: 0x8C, PINB = 0x00, PINC = 0x00 => PORTD = 0x00"
+#140 does not set the flag
+test "PINA: 0x8C, PINB = 0x00, PINC = 0x00 => PORTD = 0x02"
 setPINA 0x8C
 setPINB 0x00
 setPINC 0x00
 continue 2
-expectPORTD 0x00
+expectPORTD 0x02
 checkResult
 
 test "PINA: 0x46, PINB = 0x46, PINC = 0x00 => PORTD = 0x00"
@@ -147,12 +147,12 @@ continue 2
 expectPORTD 0x00
 checkResult
 
-test "PINA: 0xFF, PINB = 0x00, PINC = 0x00 => PORTD = 0x01"
+test "PINA: 0xFF, PINB = 0x00, PINC = 0x00 => PORTD = 0x03"
 setPINA 0xFF
 setPINB 0x00
 setPINC 0x00
 continue 2
-expectPORTD 0x01
+expectPORTD 0x03
 checkResult
 
 test "PINA: 0xFF, PINB = 0xFF, PINC = 0xFF => PORTD = 0x01"
@@ -179,6 +179,15 @@ setPINC 0x46
 continue 2
 expectPORTD 0x01
 checkResult
+
+test "PINA: 0x50, PINB = 0x00, PINC = 0x00 => PORTD = 0x02"
+setPINA 0x51
+setPINB 0x00
+setPINC 0x00
+continue 2
+expectPORTD 0x02
+checkResult
+
 # Report on how many tests passed/tests ran
 set $passed=$tests-$failed
 eval "shell echo Passed %d/%d tests.\n",$passed,$tests

@@ -27,32 +27,32 @@ echo ======================================================\n
 echo Running all tests..."\n\n
 
 # Exercise 1 test:
-#test "PINA: 0x02 => PORTB: 0x01"
-#setPINA 0x02
-#continue 2
-#expectPORTB 0x01
-#checkResult
+test "PINA: 0x02 => PORTB: 0x00"
+setPINA 0x02
+continue 2
+expectPORTB 0x00
+checkResult
 
-#test "PINA: 0x01 => PORTB: 0x00"
-#setPINA 0x01
-#continue 2
-#expectPORTB 0x00
-#checkResult
+test "PINA: 0x01 => PORTB: 0x01"
+setPINA 0x01
+continue 2
+expectPORTB 0x01
+checkResult
 
-#test "PINA: 0x00 => PORTB: 0x00"
-#setPINA 0x00
-#continue 2
-#expectPORTB 0x00
-#checkResult
+test "PINA: 0x00 => PORTB: 0x00"
+setPINA 0x00
+continue 2
+expectPORTB 0x00
+checkResult
 
-#test "PINA: 0x03 => PORTB: 0x00"
-#setPINA 0x03
-#continue 2
-#expectPORTB 0x00
-#checkResult
+test "PINA: 0x03 => PORTB: 0x00"
+setPINA 0x03
+continue 2
+expectPORTB 0x00
+checkResult
 
-# Exercise 2 test:
-test "PINA: 0x01 => PORTC: 0x01"
+# Exercise 2 test:i
+test "IGNORE: EXERCISE2/3:PINA: 0x01 => PORTC: 0x01"
 setPINA 0x01
 continue 2
 expectPORTC 0x03

@@ -25,16 +25,16 @@ int main(void) {
 	unsigned char cntavail = 0x00;
     /* Insert your solution below */
     while (1) {
-	/* tmpA0 = PINA & 0x01;
+	 tmpA0 = PINA & 0x01;
 	tmpA1 = PINA & 0x02;
-	if (!tmpA0 && tmpA1) {
+	if (tmpA0 && !tmpA1) {
 		tmpB = (tmpB & 0x00) | 0x01;	
 	} else {
 		tmpB = (tmpB & 0x00) | 0x00;	
 	}
-	PORTB = tmpB; */
+	PORTB = tmpB; 
 	
-	tmpA = PINA & 0x0F;
+	/* tmpA = PINA & 0x0F;
 	if (tmpA == 0x00) {
 		cntavail = 0x04;
 	} else if ( (tmpA == 0x01) || (tmpA == 0x02) || (tmpA == 0x04) || (tmpA == 0x08) ) {
@@ -46,7 +46,7 @@ int main(void) {
 	} else if ( tmpA == 0x0F ) {
 		cntavail = 0x80; //debugger in campus returns error when unit testing, even though it returns the desired output
 	}
-	PORTC = cntavail;	
+	PORTC = cntavail; */
     }
     return 1;
 }

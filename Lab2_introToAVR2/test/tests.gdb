@@ -52,59 +52,109 @@ echo Running all tests..."\n\n
 #checkResult
 
 # Exercise 2 test:
-test "PINA: 0x01 => PORTC: 0x01"
-setPINA 0x01
-continue 2
-expectPORTC 0x01
-checkResult
+#test "PINA: 0x01 => PORTC: 0x01"
+#setPINA 0x01
+#continue 2
+#expectPORTC 0x01
+#checkResult
 
-test "PINA: 0x02 => PORTC: 0x01"
-setPINA 0x02
-continue 2
-expectPORTC 0x01
-checkResult
+#test "PINA: 0x02 => PORTC: 0x01"
+#setPINA 0x02
+#continue 2
+#expectPORTC 0x01
+#checkResult
 
-test "PINA: 0x04 => PORTC: 0x01"
-setPINA 0x04
-continue 2
-expectPORTC 0x01
-checkResult
+#test "PINA: 0x04 => PORTC: 0x01"
+#setPINA 0x04
+#continue 2
+#expectPORTC 0x01
+#checkResult
 
-test "PINA: 0x08 => PORTC: 0x01"
-setPINA 0x08
-continue 2
-expectPORTC 0x01
-checkResult
+#test "PINA: 0x08 => PORTC: 0x01"
+#setPINA 0x08
+#continue 2
+#expectPORTC 0x01
+#checkResult
 
-test "PINA: 0x03 => PORTC: 0x02"
-setPINA 0x03
-continue 2
-expectPORTC 0x02
-checkResult
+#test "PINA: 0x03 => PORTC: 0x02"
+#setPINA 0x03
+#continue 2
+#expectPORTC 0x02
+#checkResult
 
-test "PINA: 0x06 => PORTC: 0x02"
-setPINA 0x06
-continue 2
-expectPORTC 0x02
-checkResult
+#test "PINA: 0x06 => PORTC: 0x02"
+#setPINA 0x06
+#continue 2
+#expectPORTC 0x02
+#checkResult
 
-test "PINA: 0x07 => PORTC: 0x03"
-setPINA 0x07
-continue 2
-expectPORTC 0x03
-checkResult
+#test "PINA: 0x07 => PORTC: 0x03"
+#setPINA 0x07
+#continue 2
+#expectPORTC 0x03
+#checkResult
 
-test "PINA: 0x0F => PORTC: 0x04"
-setPINA 0x0F
-continue 2
-expectPORTC 0x84
-checkResult
+#test "PINA: 0x0F => PORTC: 0x04"
+#setPINA 0x0F
+#continue 2
+#expectPORTC 0x84
+#checkResult
 
-test "PINA: 0x00 => PORTC: 0x00"
+#test "PINA: 0x00 => PORTC: 0x00"
+#setPINA 0x00
+#continue 2
+#expectPORTC 0x00
+#checkResult
+
+#Exercise 3 test:
+test "PINA: 0x00, PINB = 0x00, PINC = 0x00 => PORTD = 0x00;
 setPINA 0x00
+setPINB 0x00
+setPINC 0x00
 continue 2
-expectPORTC 0x00
+expectPORTD 0x00
 checkResult
+
+test "PINA: 0x8C, PINB = 0x00, PINC = 0x00 => PORTD = 0x00;
+setPINA 0x8C
+setPINB 0x00
+setPINC 0x00
+continue 2
+expectPORTD 0x00
+checkResult
+
+test "PINA: 0x46, PINB = 0x46, PINC = 0x00 => PORTD = 0x00;
+setPINA 0x46
+setPINB 0x46
+setPINC 0x00
+continue 2
+expectPORTD 0x00
+checkResult
+
+test "PINA: 0x46, PINB = 0x23, PINC = 0x25 => PORTD = 0x01;
+setPINA 0x46
+setPINB 0x23
+setPINC 0x25
+continue 2
+expectPORTD 0x01
+checkResult
+
+test "PINA: 0x46, PINB = 0x23, PINC = 0x20 => PORTD = 0x00;
+setPINA 0x46
+setPINB 0x23
+setPINC 0x20
+continue 2
+expectPORTD 0x00
+checkResult
+
+test "PINA: 0xFF, PINB = 0x00, PINC = 0x00 => PORTD = 0x01;
+setPINA 0xFF
+setPINB 0x00
+setPINC 0x00
+continue 2
+expectPORTD 0x01
+checkResult
+
 
 
 # Report on how many tests passed/tests ran

@@ -17,12 +17,17 @@ int main(void) {
 	DDRA = 0x00; PORTA = 0xFF; //comment port bc we modify variables in test.gdb
 	DDRB = 0xFF; PORTB = 0x00; //set PORTB to 0
 	DDRC = 0xFF; PORTC = 0x00;
-	unsigned char tmpA = 0x00;
+	
+	/* unsigned char tmpA = 0x00;
 	unsigned char tmpB = 0x00; //init tmpB to 0
 	unsigned char tmpC = 0x00;
 	unsigned char tmpA0 = 0x00; 
 	unsigned char tmpA1 = 0x00;
-	unsigned char cntavail = 0x00;
+	unsigned char cntavail = 0x00; */
+
+	unsigned char high = 0x00;
+	unsigned char low = 0x00;
+	unsigned char tmpD = 0x00;
     /* Insert your solution below */
     while (1) {
 	/* tmpA0 = PINA & 0x01;
@@ -34,7 +39,7 @@ int main(void) {
 	}
 	PORTB = tmpB; */
 	
-	tmpA = PINA & 0x0F;
+	/* tmpA = PINA & 0x0F;
 	if (tmpA == 0x00) {
 		cntavail = 0x00;
 	} else if ( (tmpA == 0x01) || (tmpA == 0x02) || (tmpA == 0x04) || (tmpA == 0x08) ) {
@@ -47,6 +52,19 @@ int main(void) {
 		cntavail = 0x84; //debugger in campus returns error when unit testing, even though it returns the desired output
 	}
 	PORTC = cntavail;	
-    }
-    return 1;
+    } */
+	
+	low = (PINA & 0x0F) + (PINB & 0x0F) + (PINC & 0x0F);
+	high = (PINA >> 4) + (PINB >> 4) + (PINC >> 4);
+
+	high = high + (low >> 4);
+
+	//unsigned char low4 = low & 0x0F;
+	if ( (high > 0x08) || ((high == 0x08) &&  ((low & 0x0F) > 0x0C)) ) {
+		tmpD = 0x01;
+	}
+	
+	PORTD = tmpD;
+}	
+    	return 1;
 }

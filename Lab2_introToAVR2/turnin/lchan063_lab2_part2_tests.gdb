@@ -1,4 +1,4 @@
-# Test file for Lab2_introToAVR
+# Test file for Lab2_introToAVR2
 
 
 # commands.gdb provides the following functions for ease:
@@ -26,19 +26,86 @@
 echo ======================================================\n
 echo Running all tests..."\n\n
 
-# Example test:
-test "PINA: 0x00, PINB: 0x00 => PORTC: 0"
-# Set inputs
-setPINA 0x02
-setPINB 0x00
-# Continue for several ticks
+# Exercise 1 test:
+#test "PINA: 0x02 => PORTB: 0x01"
+#setPINA 0x02
+#continue 2
+#expectPORTB 0x01
+#checkResult
+
+#test "PINA: 0x01 => PORTB: 0x00"
+#setPINA 0x01
+#continue 2
+#expectPORTB 0x00
+#checkResult
+
+#test "PINA: 0x00 => PORTB: 0x00"
+#setPINA 0x00
+#continue 2
+#expectPORTB 0x00
+#checkResult
+
+#test "PINA: 0x03 => PORTB: 0x00"
+#setPINA 0x03
+#continue 2
+#expectPORTB 0x00
+#checkResult
+
+# Exercise 2 test:
+test "PINA: 0x01 => PORTC: 0x01"
+setPINA 0x01
 continue 2
-# Set expect values
-expectPORTB 0x01
-# Check pass/fail
+expectPORTC 0x01
 checkResult
 
-# Add tests below
+test "PINA: 0x02 => PORTC: 0x01"
+setPINA 0x02
+continue 2
+expectPORTC 0x01
+checkResult
+
+test "PINA: 0x04 => PORTC: 0x01"
+setPINA 0x04
+continue 2
+expectPORTC 0x01
+checkResult
+
+test "PINA: 0x08 => PORTC: 0x01"
+setPINA 0x08
+continue 2
+expectPORTC 0x01
+checkResult
+
+test "PINA: 0x03 => PORTC: 0x02"
+setPINA 0x03
+continue 2
+expectPORTC 0x02
+checkResult
+
+test "PINA: 0x06 => PORTC: 0x02"
+setPINA 0x06
+continue 2
+expectPORTC 0x02
+checkResult
+
+test "PINA: 0x07 => PORTC: 0x03"
+setPINA 0x07
+continue 2
+expectPORTC 0x03
+checkResult
+
+test "PINA: 0x0F => PORTC: 0x04"
+setPINA 0x0F
+continue 2
+expectPORTC 0x04
+checkResult
+
+test "PINA: 0x00 => PORTC: 0x00"
+setPINA 0x00
+continue 2
+expectPORTC 0x00
+checkResult
+
 
 # Report on how many tests passed/tests ran
 set $passed=$tests-$failed

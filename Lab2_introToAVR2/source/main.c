@@ -15,8 +15,9 @@
 int main(void) {
     /* Insert DDR and PORT initializations */
 	DDRA = 0x00; PORTA = 0xFF; //comment port bc we modify variables in test.gdb
-	DDRB = 0xFF; PORTB = 0x00; //set PORTB to 0
-	DDRC = 0xFF; PORTC = 0x00;
+	DDRB = 0x00; PORTB = 0xFF; //set PORTB to 0
+	DDRC = 0x00; PORTC = 0xFF;
+	DDRD = 0xFF; PORTD = 0x00;
 	
 	/* unsigned char tmpA = 0x00;
 	unsigned char tmpB = 0x00; //init tmpB to 0
@@ -60,11 +61,17 @@ int main(void) {
 	high = high + (low >> 4);
 
 	//unsigned char low4 = low & 0x0F;
-	if ( (high > 0x08) || ((high == 0x08) &&  ((low & 0x0F) > 0x0C)) ) {
+	if ( (high > 0x08) ) {
 		tmpD = 0x01;
+	} else if (  ((high == 0x08) && ((low & 0x0F) > 0x0C)) ) {
+		tmpD = 0x01;
+	} else {
+		tmpD = 0x00; //this appears to let the output default to 0x00
 	}
 	
 	PORTD = tmpD;
+	//PORTD = high;
+	//PORTC = low;
 }	
     	return 1;
 }

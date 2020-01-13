@@ -107,7 +107,7 @@ echo Running all tests..."\n\n
 #checkResult
 
 #Exercise 3 test:
-test "PINA: 0x00, PINB = 0x00, PINC = 0x00 => PORTD = 0x00;
+test "PINA: 0x00, PINB = 0x00, PINC = 0x00 => PORTD = 0x00"
 setPINA 0x00
 setPINB 0x00
 setPINC 0x00
@@ -115,7 +115,7 @@ continue 2
 expectPORTD 0x00
 checkResult
 
-test "PINA: 0x8C, PINB = 0x00, PINC = 0x00 => PORTD = 0x00;
+test "PINA: 0x8C, PINB = 0x00, PINC = 0x00 => PORTD = 0x00"
 setPINA 0x8C
 setPINB 0x00
 setPINC 0x00
@@ -123,23 +123,23 @@ continue 2
 expectPORTD 0x00
 checkResult
 
-test "PINA: 0x46, PINB = 0x46, PINC = 0x00 => PORTD = 0x00;
+test "PINA: 0x46, PINB = 0x46, PINC = 0x00 => PORTD = 0x00"
 setPINA 0x46
 setPINB 0x46
 setPINC 0x00
 continue 2
 expectPORTD 0x00
 checkResult
-
-test "PINA: 0x46, PINB = 0x23, PINC = 0x25 => PORTD = 0x01;
+#sum = 142
+test "PINA: 0x46, PINB = 0x23, PINC = 0x25 => PORTD = 0x01"
 setPINA 0x46
 setPINB 0x23
 setPINC 0x25
 continue 2
 expectPORTD 0x01
 checkResult
-
-test "PINA: 0x46, PINB = 0x23, PINC = 0x20 => PORTD = 0x00;
+#sum = 137
+test "PINA: 0x46, PINB = 0x23, PINC = 0x20 => PORTD = 0x00"
 setPINA 0x46
 setPINB 0x23
 setPINC 0x20
@@ -147,7 +147,7 @@ continue 2
 expectPORTD 0x00
 checkResult
 
-test "PINA: 0xFF, PINB = 0x00, PINC = 0x00 => PORTD = 0x01;
+test "PINA: 0xFF, PINB = 0x00, PINC = 0x00 => PORTD = 0x01"
 setPINA 0xFF
 setPINB 0x00
 setPINC 0x00
@@ -155,8 +155,30 @@ continue 2
 expectPORTD 0x01
 checkResult
 
+test "PINA: 0xFF, PINB = 0xFF, PINC = 0xFF => PORTD = 0x01"
+setPINA 0xFF
+setPINB 0xFF
+setPINC 0xFF
+continue 2
+expectPORTD 0x01
+checkResult
 
-
+#sum = 100
+test "PINA: 0x20, PINB = 0x48, PINC = 0x1C => PORTD = 0x00"
+setPINA 0x20
+setPINB 0x48
+setPINC 0x1C
+continue 2
+expectPORTD 0x00
+checkResult
+#sum = 170
+test "PINA: 0x32, PINB = 0x32, PINC = 0x46 => PORTD = 0x01"
+setPINA 0x32
+setPINB 0x32
+setPINC 0x46
+continue 2
+expectPORTD 0x01
+checkResult
 # Report on how many tests passed/tests ran
 set $passed=$tests-$failed
 eval "shell echo Passed %d/%d tests.\n",$passed,$tests
